@@ -274,7 +274,7 @@ public class CustomerHome extends javax.swing.JFrame {
         
         int id=FileOperations.ID++;
                 
-        String Order=id+"$"+fuelType+"$"+price+"$"+quantity+"$"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        String Order=id+"$"+fuelType+"$"+price+"$"+quantity+"$"+totalP+"$"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date())+"$0\n";
         
         String message="You order has been placed.\n"+
                 "your Id: "+id+"\n"+

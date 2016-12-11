@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JTable;
 
 /**
  *
@@ -74,6 +75,24 @@ public class FileOperations {
             return -1;
         }
     }
+    
+    public static ArrayList<String[]> getOrderInfos(String fileName){
+         try{
+            Scanner in=new Scanner(new File(fileName));
+            ArrayList<String[]> info=new ArrayList<String[]>();
+            while(in.hasNext()){
+                String []infos=in.nextLine().trim().split("\\$");
+                info.add(infos);
+            }
+            
+            return  info;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+    
+    
     
     
 }
