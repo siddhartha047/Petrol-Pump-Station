@@ -272,7 +272,8 @@ public class CustomerHome extends javax.swing.JFrame {
         
         if(n==1)return;
         
-        int id=FileOperations.ID++;
+        int id=FileOperations.ID*1000+(int)(Math.random()*1000);
+        
                 
         String Order=id+"$"+fuelType+"$"+price+"$"+quantity+"$"+totalP+"$"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date())+"$0\n";
         

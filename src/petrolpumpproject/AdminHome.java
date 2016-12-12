@@ -5,7 +5,9 @@
  */
 package petrolpumpproject;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -18,11 +20,22 @@ public class AdminHome extends javax.swing.JFrame {
      */
     public AdminHome() {
         initComponents();
+        updateTable(jTable1);
+        CommonFunctions.updateFuelCombo(jComboBox1);
+        CommonFunctions.updateAdminCombo(jComboBox2);
+        
     }
     Login login;
     public AdminHome(Login log) {
         initComponents();
         login=log;
+        updateTable(jTable1);
+        CommonFunctions.updateFuelCombo(jComboBox1);
+        CommonFunctions.updateAdminCombo(jComboBox2);
+    }
+    
+    public void updateTable(JTable jTable){
+        CommonFunctions.updateFuelTable1(jTable);
     }
 
     /**
@@ -36,6 +49,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jTextField1 = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -52,9 +66,23 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        priceField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        quantityField = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        userName = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -63,6 +91,8 @@ public class AdminHome extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         jMenuItem1.setText("jMenuItem1");
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,57 +237,139 @@ public class AdminHome extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Fuel", jPanel1);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("Fuel");
+
+        jLabel5.setText("Price");
+
+        jLabel6.setText("Quantity");
+
+        jButton2.setText("Update Price");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Update Quantity");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceField)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton2))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Update Fuel Quantity", jPanel2);
+        jTabbedPane1.addTab("Update Fuel Info", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
-        );
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTabbedPane1.addTab("Update Fuel Price", jPanel3);
+        jLabel7.setText("Employee");
+
+        jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Username");
+
+        jLabel9.setText("Password");
+
+        jButton5.setText("Add");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(passwordField)
+                    .addComponent(userName)
+                    .addComponent(jComboBox2, 0, 135, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jButton4))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jButton5))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Employee", jPanel4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Delete Employee", jPanel5);
+        jTabbedPane1.addTab("Employe Manage", jPanel4);
 
         jMenu1.setText("File");
 
@@ -305,41 +417,128 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void fuelTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuelTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fuelTypeActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             String fueltype=fuelType.getText();
             double price=Double.parseDouble(unitPrice.getText());
             double quant=Double.parseDouble(quantity.getText());
             String descrip=description.getText();
-            
+
             if(fueltype.length()<0){
                 JOptionPane.showMessageDialog(null,"Information not complete");
                 return;
             }
             String infor=fueltype+"$"+price+"$"+quant+"$"+descrip+"\n";
-            
+
             if(FileOperations.appendToFile(infor,"Files/fuel.txt")){
                 JOptionPane.showMessageDialog(null,"Sucessfully Added");
                 //update table
-                
-                
+
             }
+            updateTable(jTable1);
+        CommonFunctions.updateFuelCombo(jComboBox1);
+        CommonFunctions.updateAdminCombo(jComboBox2);
             
-            
-            
+
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Information not correctly Provided");
             return;
         }
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void fuelTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuelTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fuelTypeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ComboItem item=(ComboItem)jComboBox1.getSelectedItem();
+        String fueltype=item.key;                
+        String price=priceField.getText();
+        
+        ArrayList<String[]> fuels=FileOperations.getFuelInfo();
+        
+        for(int i=0;i<fuels.size();i++){
+            if(fuels.get(i)[0].equals(fueltype)){
+                fuels.get(i)[1]=price;
+                break;
+            }
+        }
+        
+        
+        FileOperations.writeTofile(fuels);
+        
+        updateTable(jTable1);
+        
+        JOptionPane.showMessageDialog(null, "Price Updated");
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         ComboItem item=(ComboItem)jComboBox1.getSelectedItem();
+        String fueltype=item.key;                
+        String price=quantityField.getText();
+        
+        ArrayList<String[]> fuels=FileOperations.getFuelInfo();
+        
+        for(int i=0;i<fuels.size();i++){
+            if(fuels.get(i)[0].equals(fueltype)){
+                fuels.get(i)[2]=price;
+                break;
+            }
+        }
+        
+        
+        FileOperations.writeTofile(fuels);
+        
+        updateTable(jTable1);
+        
+        JOptionPane.showMessageDialog(null, "Quantity Updated");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ComboItem item=(ComboItem)jComboBox2.getSelectedItem();
+        String name=item.key;                
+                
+        ArrayList<String[]> fuels=FileOperations.getEmployeeInfo("Files/Employee.txt");
+        
+        int index=0;
+        
+        for(int i=0;i<fuels.size();i++){
+            if(fuels.get(i)[0].equals(name)){                
+                index=i;
+            }
+        }
+        
+        fuels.remove(index);
+                
+        FileOperations.writeToEmployeefile(fuels);                
+        
+        CommonFunctions.updateAdminCombo(jComboBox2);
+        
+        JOptionPane.showMessageDialog(null, "Deleted");
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String user=userName.getText();
+        String password=passwordField.getText();
+
+        if(user.length()==0 || password.length()==0){
+            JOptionPane.showMessageDialog(null,"Cannot be empty");
+            return;
+        }
+        
+        String info=user+" "+password+"\n";
+        
+        FileOperations.appendToFile(info,"Files/Employee.txt");
+        CommonFunctions.updateAdminCombo(jComboBox2);
+        
+        JOptionPane.showMessageDialog(null,"New Employee Added Sucessfully");
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -380,9 +579,21 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextArea description;
     private javax.swing.JTextField fuelType;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -391,16 +602,19 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JTextField priceField;
     private javax.swing.JTextField quantity;
+    private javax.swing.JTextField quantityField;
     private javax.swing.JTextField unitPrice;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

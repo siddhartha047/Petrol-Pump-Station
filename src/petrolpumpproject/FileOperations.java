@@ -35,8 +35,95 @@ public class FileOperations {
     public static int ID=1111;
     
     public static final String fuelFile="Files/fuel.txt";
+    public static final String employeeFile="Files/Employee.txt";
     public static final String orderFile="Files/PendingOrders.txt";
     
+    public static void writeTofileOrder(ArrayList<String[]> fuels){
+        try{
+            
+            PrintWriter out=new PrintWriter(new PrintWriter(new FileOutputStream(new File(orderFile), false))); 
+            
+            for(int i=0;i<fuels.size();i++){
+                String text="";
+                for(int j=0;j<fuels.get(i).length-1;j++){
+                    text=text+fuels.get(i)[j]+"$";
+                }
+                text=text+fuels.get(i)[fuels.get(i).length-1]+"\n";
+                out.write(text);
+            }
+            
+            out.close();
+            
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
+    public static void writeTofile(ArrayList<String[]> fuels){
+        try{
+            
+            PrintWriter out=new PrintWriter(new PrintWriter(new FileOutputStream(new File(fuelFile), false))); 
+            
+            for(int i=0;i<fuels.size();i++){
+                String text="";
+                for(int j=0;j<fuels.get(i).length-1;j++){
+                    text=text+fuels.get(i)[j]+"$";
+                }
+                text=text+fuels.get(i)[fuels.get(i).length-1]+"\n";
+                out.write(text);
+            }
+            
+            out.close();
+            
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
+     public static void writeToEmployeefile(ArrayList<String[]> fuels){
+        try{
+            
+            PrintWriter out=new PrintWriter(new PrintWriter(new FileOutputStream(new File("Files/Employee.txt"), false))); 
+            
+            for(int i=0;i<fuels.size();i++){
+                String text="";
+                for(int j=0;j<fuels.get(i).length-1;j++){
+                    text=text+fuels.get(i)[j]+" ";
+                }
+                text=text+fuels.get(i)[fuels.get(i).length-1]+"\n";
+                out.write(text);
+            }
+            
+            out.close();
+            
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
+    public static ArrayList<String[]> getFuelInfo(){
+        return getFuelInfo(fuelFile);
+    }
+    
+     
+    public static ArrayList<String[]> getEmployeeInfo(String fileName){
+         try{
+            Scanner in=new Scanner(new File(fileName));
+            ArrayList<String[]> info=new ArrayList<String[]>();
+            while(in.hasNext()){
+                String []infos=in.nextLine().trim().split(" ");
+                info.add(infos);
+            }
+            
+            return  info;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
     
     public static ArrayList<String[]> getFuelInfo(String fileName){
          try{

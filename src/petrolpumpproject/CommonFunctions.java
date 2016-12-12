@@ -43,6 +43,30 @@ public class CommonFunctions {
         }
         
     }
+    
+      public static void updateFuelTable1(JTable jTable){        
+        
+        ArrayList<String[]> listFuel=FileOperations.getFuelInfo(FileOperations.fuelFile);
+        if(listFuel==null || listFuel.isEmpty())return;
+        jTable.removeAll();
+        DefaultTableModel dm = (DefaultTableModel)jTable.getModel();
+        dm.getDataVector().removeAllElements();
+        jTable.removeAll();        
+        for(int i=0;i<listFuel.size();i++){
+            String[] infos=listFuel.get(i);
+            String[] need=new String[4];
+            for(int j=0;j<4;j++){
+             //   jTable.getModel().setValueAt(infos[j],i,j);
+             need[j]=infos[j];
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable.getModel();            
+            model.addRow(need);
+            
+        }
+        
+    }
+     
+     
       
      public static void updateFuelCombo(JComboBox comboBox){
         
@@ -56,7 +80,55 @@ public class CommonFunctions {
         
     }
      
-    public static void loadOrders(JTable jTable, int type){
+     public static void updateAdminCombo(JComboBox comboBox){
+        
+         comboBox.removeAllItems();
+        ArrayList<String[]> listFuel=FileOperations.getEmployeeInfo(FileOperations.employeeFile);
+        if(listFuel==null || listFuel.isEmpty())return;
+        
+        for(int i=0;i<listFuel.size();i++){
+            String[] infos=listFuel.get(i);            
+            comboBox.addItem(new ComboItem(infos[0],infos[0]));                        
+        }
+        
+    }
+     
+     
+     public static void loadOrders(JTable jTable, int type){
+                
+        ArrayList<String[]> listFuel=FileOperations.getOrderInfos(FileOperations.orderFile);
+        if(listFuel==null || listFuel.isEmpty())return;
+
+        DefaultTableModel dm = (DefaultTableModel)jTable.getModel();
+        dm.getDataVector().removeAllElements();
+        jTable.removeAll();        
+    
+        for(int i=0;i<listFuel.size();i++){
+            String[] infos=listFuel.get(i);
+                        
+            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+            if(type==1 && infos[6].equals("1"))continue;
+            if(type==1){
+                infos[6]="Confirm";
+            }
+            else if(type==2){                               
+                
+                if(infos[6].equals("0")){
+                    infos[6]="Pending";
+                }
+                else 
+                {
+                    infos[6]="Complete";
+                }
+            }
+            model.addRow(infos);
+            
+            
+
+        }
+    }
+     
+    public static void loadOrders2(JTable jTable, int type){
         
         
         ArrayList<String[]> listFuel=FileOperations.getOrderInfos(FileOperations.orderFile);
@@ -98,9 +170,9 @@ public class CommonFunctions {
                 public void actionPerformed(ActionEvent e)
                 {
                     System.out.println("Clicked");
-                    JTable table = (JTable)e.getSource();
-                    int modelRow = Integer.valueOf( e.getActionCommand() );
-                    ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                    //JTable table = (JTable)e.getSource();
+                    //int modelRow = Integer.valueOf( e.getActionCommand() );
+                    //((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 }
             };
            

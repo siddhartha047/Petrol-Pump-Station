@@ -1,2 +1,2 @@
-Octan$123.0$1000.0$Very Pricey
-Petrol$120.0$1222.0$Is moderate
+Petrol$12$1000.0$Tasty
+Octan$128.0$1000.0$Tasty
